@@ -1,2 +1,2 @@
-# -web-scraper
+# web-scraper
 Web Scraper in Golang
