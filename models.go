@@ -1,4 +1,4 @@
-packege main
+package main
 
 type user struct {
 	ID        uuid.UUID `json:"id"`
