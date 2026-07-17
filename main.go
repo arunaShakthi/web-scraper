@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/arunaShakthi/web-scraper/internal/db"
 
@@ -39,10 +40,12 @@ func main() {
 	if err != nil {
 		log.Fatal("Error connecting to database: ", err)
 	}
-
+	db := db.New(conn)
 	apiCfg := apiConfig{
-		DB: db.New(conn),
+		DB: db,
 	}
+
+	go startScraping(db, 10, time.Minute)
 
 	router := chi.NewRouter()
 
